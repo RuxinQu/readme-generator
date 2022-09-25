@@ -61,8 +61,8 @@ const questions = [
         name: 'license',
         message: 'Enter project license:',
         choices: [
-            "BSD",
-            "GPL",
+            "Apache_2.0",
+            "GPL_3.0",
             "MIT",
             "None"
         ],
@@ -83,6 +83,14 @@ const questions = [
         message: 'Please provide your github username:',
         validate: function (input) {
             return !!input || 'Please provide your github username!'
+        }
+    },
+    {
+        type: 'input',
+        name: 'reponame',
+        message: 'Please provide your github repository name:',
+        validate: function (input) {
+            return !!input || 'Please provide your github repository username!'
         }
     }
 ];

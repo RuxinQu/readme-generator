@@ -1,61 +1,84 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
-  return `![badge](https://img.shields.io/badge/license-${license}-brightgreen)`
-  //generate badge link https://img.shields.io/github/license/<Github-Username>/<Repository>
+  if (license !== 'None') {
+    markdown.push(`![badge](https://img.shields.io/badge/License-${license}-green.svg)`);
+  }
+  else {
+    return '';
+  }
 }
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
-
+  if (license == 'None') {
+    return ''
+  }
+  else {
+    if (license == 'Mit') {
+      markdown.push('[https://www.mit.edu/~amini/LICENSE.md](https://www.mit.edu/~amini/LICENSE.md)');
+    } else if (license == 'Apache_2.0') {
+      markdown.push('[https://opensource.org/licenses/Apache-2.0](https://opensource.org/licenses/Apache-2.0)');
+    } else {
+      markdown.push('[https://www.gnu.org/licenses/gpl-3.0.txt](https://www.gnu.org/licenses/gpl-3.0.txt)');
+    }
+  }
 }
-
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
+const tableArr = []
 function renderLicenseSection(license) {
-
+  if (license !== 'None') {
+    tableArr.push('- [License](#license)')
+  } else {
+    return '';
+  }
 }
 
 function generateTitle(title) {
-  const result = '# ' + title
-  return result;
+  markdown.push('# ' + title);
 }
 
 function generateDescription(description) {
   const descriptionEl = '## Description';
-  const result = `${descriptionEl}\n\n${description}`;
-  return result;
+  markdown.push(`${descriptionEl}\n\n${description}`);
 }
 
-function generateTableOfContents(credit) {
-
+function generateTableOfContents(data) {
   const tableOfContents = '## Table of Contents';
-  const tableList1 = '- [Installation](#installation)';
-  const tableList2 = '- [Usage](#usage)';
-  const tableList3 = '- [Credits](#credits)';
-  const tableList4 = '- [License](#license)';
-  return credit ? `${tableOfContents}\n\n${tableList1}\n${tableList2}\n${tableList3}\n${tableList4}` :
-    `${tableOfContents}\n\n${tableList1}\n${tableList2}\n${tableList4}`;
+  tableArr.push(tableOfContents)
+  tableArr.push('\n', '- [Installation](#installation)', '- [Usage](#usage)');
+  if (data.credit) {
+    tableArr.push('- [Credits](#credits)');
+  }
+  renderLicenseSection(data.license);
+  tableArr.push('- [Badge](#badge)')
+  if (data.contribute) {
+    tableArr.push('- [Contribute](#contribute)')
+  }
+  if (data.test) {
+    tableArr.push('- [Tests](#tests)')
+  }
+
+  markdown.push(tableArr.join('\n'))
 }
 
 function generateInstallation(installation) {
   const installationEl = '## Installation';
-  const result = `${installationEl}\n\n${installation}`;
-  return result;
+  markdown.push(`${installationEl}\n\n${installation}`);
 }
 
 function generateUsage(usage, screenshot) {
   const usageEl = '## Usage';
   const screenshotDescription = 'Here\'s a screenshot of the project';
   const screenshotPath = `![project screenshot](assets/images/${screenshot})`;
-  const result = `${usageEl}\n\n${usage}\n\n${screenshotDescription}\n\n${screenshotPath}`;
-  return result;
+  markdown.push(`${usageEl}\n\n${usage}\n\n${screenshotDescription}\n\n${screenshotPath}`);
 }
 
 function generateCredit(credit) {
   if (credit) {
-    const creditEl = '## Credit';
+    const creditEl = '## Credits';
     const collaboratorArr = credit.split(',').map(ele => ele.trim());
     let collaboratorStr = [];
     for (let x = 0; x < collaboratorArr.length; x++) {
@@ -63,40 +86,56 @@ function generateCredit(credit) {
         collaboratorStr += `- ${collaboratorArr[x]}\n`
       }
     }
-    const result = `${creditEl}\n\n${collaboratorStr}`;
-    return result;
+    markdown.push(`${creditEl}\n\n${collaboratorStr}`);
   } else {
-    return
+    return ''
   }
+}
+
+function generateLicense(license) {
+  if (license !== 'None') {
+    const licenseEl = '## License';
+    markdown.push(`${licenseEl}\n\nThis project is under ${license} license`);
+  } else {
+    return ''
+  }
+}
+
+function generateBadge(data) {
+  const badgeEl = '## Badge'
+  const badge = `![badmath](https://img.shields.io/github/languages/top/${data.username}/${data.reponame})`
+  markdown.push(`${badgeEl}\n\n${badge}`)
 }
 
 function generateContribute(contribute) {
   if (contribute) {
     const contributeEl = '## Contribute';
-    const result = `${contributeEl}\n\n${contribute}`;
-    return result;
+    markdown.push(`${contributeEl}\n\n${contribute}`);
   }
 }
 
 function generateTest(test) {
   if (test) {
     const testEl = '## Tests';
-    const result = `${testEl}\n\n${test}`;
-    return result;
+    markdown.push(`${testEl}\n\n${test}`);
   }
 }
 
 // TODO: Create a function to generate markdown for README
+let markdown = [];
 function generateMarkdown(data) {
-  let markdown = [];
-  markdown.push(generateTitle(data.title));
-  markdown.push(generateDescription(data.description));
-  markdown.push(generateTableOfContents(data.credit));
-  markdown.push(generateInstallation(data.installation));
-  markdown.push(generateUsage(data.usage, data.screenshot));
-  markdown.push(generateCredit(data.credit));
-  markdown.push(generateContribute(data.contribute));
-  markdown.push(generateTest(data.test));
+  generateTitle(data.title);
+  renderLicenseBadge(data.license);
+  generateDescription(data.description);
+  generateTableOfContents(data);
+  generateInstallation(data.installation);
+  generateUsage(data.usage, data.screenshot);
+  generateCredit(data.credit);
+  generateLicense(data.license);
+  renderLicenseLink(data.license)
+  generateBadge(data)
+  generateContribute(data.contribute);
+  generateTest(data.test);
   return markdown.join('\n\n');
 }
 
