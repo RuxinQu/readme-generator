@@ -35,4 +35,4 @@ This project is under MIT license
 [https://www.gnu.org/licenses/gpl-3.0.txt](https://www.gnu.org/licenses/gpl-3.0.txt)
 
 ## Contribute
-Feel free to contact me via Email: ruxinqu.gmail or just open an issue on my repository!
+Feel free to contact me via Email: ruxinqu@gmail.com or just open an issue on my repository!
