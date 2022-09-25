@@ -25,10 +25,7 @@ const questions = [
     {
         type: 'input',
         name: 'installation',
-        message: 'Please provide installation instructions:',
-        validate: function (input) {
-            return !!input || 'Please provide installation instructions!'
-        }
+        message: 'Please provide installation instructions:'
     },
     {
         type: 'input',

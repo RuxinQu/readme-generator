@@ -8,7 +8,10 @@ function renderLicenseBadge(license) {
     return '';
   }
 }
-
+function generateBadge(data) {
+  const badge = `![badge](https://img.shields.io/github/languages/top/${data.username}/${data.reponame})`
+  markdown.push(badge)
+}
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
@@ -48,12 +51,14 @@ function generateDescription(description) {
 function generateTableOfContents(data) {
   const tableOfContents = '## Table of Contents';
   tableArr.push(tableOfContents)
-  tableArr.push('\n', '- [Installation](#installation)', '- [Usage](#usage)');
+  if (data.installation) {
+    tableArr.push('- [Installation](#installation)')
+  }
+  tableArr.push('- [Usage](#usage)');
   if (data.credit) {
     tableArr.push('- [Credits](#credits)');
   }
   renderLicenseSection(data.license);
-  tableArr.push('- [Badge](#badge)')
   if (data.contribute) {
     tableArr.push('- [Contribute](#contribute)')
   }
@@ -65,8 +70,11 @@ function generateTableOfContents(data) {
 }
 
 function generateInstallation(installation) {
-  const installationEl = '## Installation';
-  markdown.push(`${installationEl}\n\n${installation}`);
+  if (installation) {
+    const installationEl = '## Installation';
+    markdown.push(`${installationEl}\n\n${installation}`);
+  }
+  else { return '' }
 }
 
 function generateUsage(usage, screenshot) {
@@ -101,12 +109,6 @@ function generateLicense(license) {
   }
 }
 
-function generateBadge(data) {
-  const badgeEl = '## Badge'
-  const badge = `![badmath](https://img.shields.io/github/languages/top/${data.username}/${data.reponame})`
-  markdown.push(`${badgeEl}\n\n${badge}`)
-}
-
 function generateContribute(contribute) {
   if (contribute) {
     const contributeEl = '## Contribute';
@@ -126,6 +128,7 @@ let markdown = [];
 function generateMarkdown(data) {
   generateTitle(data.title);
   renderLicenseBadge(data.license);
+  generateBadge(data);
   generateDescription(data.description);
   generateTableOfContents(data);
   generateInstallation(data.installation);
@@ -133,7 +136,6 @@ function generateMarkdown(data) {
   generateCredit(data.credit);
   generateLicense(data.license);
   renderLicenseLink(data.license)
-  generateBadge(data)
   generateContribute(data.contribute);
   generateTest(data.test);
   return markdown.join('\n\n');
