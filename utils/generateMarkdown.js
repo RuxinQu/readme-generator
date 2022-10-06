@@ -19,11 +19,11 @@ function renderLicenseLink(license) {
     return ''
   }
   else {
-    if (license == 'Mit') {
-      markdown.push('[https://www.mit.edu/~amini/LICENSE.md](https://www.mit.edu/~amini/LICENSE.md)');
+    if (license == 'MIT') {
+      markdown.push('[https://opensource.org/licenses/MIT](https://opensource.org/licenses/MIT)');
     } else if (license == 'Apache_2.0') {
       markdown.push('[https://opensource.org/licenses/Apache-2.0](https://opensource.org/licenses/Apache-2.0)');
-    } else {
+    } else{
       markdown.push('[https://www.gnu.org/licenses/gpl-3.0.txt](https://www.gnu.org/licenses/gpl-3.0.txt)');
     }
   }
@@ -65,7 +65,7 @@ function generateTableOfContents(data) {
   if (data.test) {
     tableArr.push('- [Tests](#tests)')
   }
-
+  tableArr.push('- [Questions](#questions)')
   markdown.push(tableArr.join('\n'))
 }
 
@@ -123,6 +123,13 @@ function generateTest(test) {
   }
 }
 
+function generateQuestion(username, email){
+  const questionEl = `## Question
+  My github profile: https://github.com/${username}\n
+  Contact me via: ${email} if you have addition questions.`
+  markdown.push(questionEl)
+}
+
 // TODO: Create a function to generate markdown for README
 let markdown = [];
 function generateMarkdown(data) {
@@ -138,6 +145,7 @@ function generateMarkdown(data) {
   renderLicenseLink(data.license)
   generateContribute(data.contribute);
   generateTest(data.test);
+  generateQuestion(data.username,data.email)
   return markdown.join('\n\n');
 }
 

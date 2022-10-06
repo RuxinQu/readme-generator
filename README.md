@@ -24,15 +24,15 @@ git clone the repository, then run `npm install` to download the dependency(inqu
 3. Users can provide additional information such as: installation instruction, collaborators, how to contribute and tests.
 4. The license badge and link are provided.
 
-Here's a screenshot of the project:
+Here's a demo video of the project:
 
-![project screenshot](assets/images/readme-generator.png)
+![project demo video](https://watch.screencastify.com/v/XgKOOaGFlaOcMt2j10tk)
 
 ## License
 
 This project is under MIT license
 
-[https://www.gnu.org/licenses/gpl-3.0.txt](https://www.gnu.org/licenses/gpl-3.0.txt)
+[https://opensource.org/licenses/MIT](https://opensource.org/licenses/MIT)
 
 ## Contribute
 Feel free to contact me via Email: ruxinqu@gmail.com or just open an issue on my repository!
