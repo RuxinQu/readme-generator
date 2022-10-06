@@ -26,7 +26,7 @@ git clone the repository, then run `npm install` to download the dependency(inqu
 
 Here's a demo video of the project:
 
-![project demo video](https://watch.screencastify.com/v/XgKOOaGFlaOcMt2j10tk)
+![project demo video](https://drive.google.com/file/d/1Kh-TbwlMUkkDvjiEtfQlqFJh7Feq23aN/view?usp=sharing)
 
 ## License
 
