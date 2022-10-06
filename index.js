@@ -89,6 +89,16 @@ const questions = [
         validate: function (input) {
             return !!input || 'Please provide your github repository username!'
         }
+    },
+    {
+        type: 'input',
+        message: 'What is your email address?',
+        name: 'email',
+        validate: function(email)
+        {
+            // Regex mail check (return true if valid mail)
+            return /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/.test(email) || 'Please provide your email!';
+        }
     }
 ];
 
