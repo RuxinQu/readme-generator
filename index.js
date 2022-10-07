@@ -35,19 +35,23 @@ const questions = [
             return !!input || 'Please provide instructions on how to use this project!'
         }
     },
-    {
-        type: 'input',
-        name: 'screenshot',
-        message: 'Please provide the filename of the screenshot in the assets/images folder:',
-        validate: function (input) {
-            if (!input) {
-                return 'Please provide the filename of the screenshot in the assets/images folder!'
-            } else {
-                const path = Path.join('assets/images', input)
-                return fs.existsSync(path) || 'File doesn\'t exist!'
-            }
-        }
-    },
+    // ==========================================================================================================
+    // The code below let users input the filename the screenshot in the assets/images folder and checks whether 
+    // the file is existing
+    // ==========================================================================================================
+    // {
+    //     type: 'input',
+    //     name: 'screenshot',
+    //     message: 'Please provide the filename of the screenshot in the assets/images folder:',
+    //     validate: function (input) {
+    //         if (!input) {
+    //             return 'Please provide the filename of the screenshot in the assets/images folder!'
+    //         } else {
+    //             const path = Path.join('assets/images', input)
+    //             return fs.existsSync(path) || 'File doesn\'t exist!'
+    //         }
+    //     }
+    // },
     {
         type: 'input',
         name: 'credit',

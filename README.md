@@ -20,13 +20,11 @@ git clone the repository, then run `npm install` to download the dependency(inqu
 ## Usage
 
 1. Run `node index.js` when you're ready to generate a README file for your project
-2. To generate a README file, the project title, description, usage(including screenshot), license, github username and repository name are required.
+2. To generate a README file, the project title, description, usage, license, github username and repository name are required.
 3. Users can provide additional information such as: installation instruction, collaborators, how to contribute and tests.
 4. The license badge and link are provided.
 
-Here's a demo video of the project:
-
-![project demo video](https://drive.google.com/file/d/1LpwKEC8BJw_4Fn5oKhcwrYEeMdW6sxyb/view?usp=sharing)
+Here's a demo video of the project. [My demo video](https://drive.google.com/file/d/1f4KmWf7iNdbTfSEjoUDOyJ0qRoPkzNNK/view?usp=sharing)
 
 ## License
 

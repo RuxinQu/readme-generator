@@ -77,11 +77,11 @@ function generateInstallation(installation) {
   else { return '' }
 }
 
-function generateUsage(usage, screenshot) {
+function generateUsage(usage) {
   const usageEl = '## Usage';
-  const screenshotDescription = 'Here\'s a screenshot of the project';
-  const screenshotPath = `![project screenshot](assets/images/${screenshot})`;
-  markdown.push(`${usageEl}\n\n${usage}\n\n${screenshotDescription}\n\n${screenshotPath}`);
+  // const screenshotDescription = 'Here\'s a screenshot of the project';
+  // const screenshotPath = `![project screenshot](assets/images/${screenshot})`;
+  markdown.push(`${usageEl}\n\n${usage}`);
 }
 
 function generateCredit(credit) {
@@ -139,7 +139,7 @@ function generateMarkdown(data) {
   generateDescription(data.description);
   generateTableOfContents(data);
   generateInstallation(data.installation);
-  generateUsage(data.usage, data.screenshot);
+  generateUsage(data.usage);
   generateCredit(data.credit);
   generateLicense(data.license);
   renderLicenseLink(data.license)
