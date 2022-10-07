@@ -60,7 +60,7 @@ function generateTableOfContents(data) {
   }
   renderLicenseSection(data.license);
   if (data.contribute) {
-    tableArr.push('- [Contribute](#contribute)')
+    tableArr.push('- [Contributing Guidelines](#contributing-guidelines)')
   }
   if (data.test) {
     tableArr.push('- [Tests](#tests)')
@@ -111,7 +111,7 @@ function generateLicense(license) {
 
 function generateContribute(contribute) {
   if (contribute) {
-    const contributeEl = '## Contribute';
+    const contributeEl = '## Contributing guidelines';
     markdown.push(`${contributeEl}\n\n${contribute}`);
   }
 }

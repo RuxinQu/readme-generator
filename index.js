@@ -71,7 +71,7 @@ const questions = [
     {
         type: 'input',
         name: 'contribute',
-        message: 'How users can contribute to your project (if any).'
+        message: 'Please provide contributing guidelines (if any).'
     },
     {
         type: 'input',
